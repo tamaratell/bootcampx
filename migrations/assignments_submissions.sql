@@ -16,18 +16,18 @@
 -- submission_date: The date is was submitted
 
 CREATE TABLE assignments (
-id SERIAL PRIMARY KEY NOT NULL,
-name VARCHAR NOT NULL,
-content TEXT,
-day INTEGER,
-chapter INTEGER,
-duration INTERVAL
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(255),
+  content TEXT,
+  day INTEGER,
+  chapter INTEGER,
+  duration INTEGER
 );
 
-CREATE TABLE assignment_submission (
-id SERIAL PRIMARY KEY NOT NULL,
-assignment_id INTEGER REFERENCES assignments(id) ON DELETE CASCADE,
-student_id INTEGER REFERENCES students(id) ON DELETE CASCADE,
-duration INTERVAL,
-submission_date DATE
+CREATE TABLE assignment_submissions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  assignment_id INTEGER REFERENCES assignments(id) ON DELETE CASCADE,
+  student_id INTEGER REFERENCES students(id) ON DELETE CASCADE,
+  duration INTEGER,
+  submission_date DATE
 );
